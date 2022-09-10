@@ -1,0 +1,54 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      11
+      S+?-(R+?)*P
+      S
+    out: |
+      6
+  - name: sample2
+    in: |
+      15
+      ?+?-?*?+?-?*?+?
+      R
+    out: |
+      2187
+  - name: sample3
+    in: |
+      13
+      (((((R)))))+?
+      P
+    out: |
+      1
+  - name: sample4
+    in: |
+      1
+      P
+      S
+    out: |
+      0
+  - name: sample5
+    in: |
+      27
+      R+((?+S-?*P+?)-P*?+S-?)*R+?
+      P
+    out: |
+      381
+  - name: sample6
+    in: |
+      83
+      ((R+?)*(?+?))*((?+?)*(?+?))*((?+?)*(?+?))-((S+?)*(?+?))*((?+?)*(?+?))*((?+?)*(?+?))
+      P
+    out: |
+      460353133
+
+extend:
+  - type: Text
+    path: "./e"
+    in: /in/*.txt
+    out: /out/*.txt

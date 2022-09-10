@@ -1,0 +1,51 @@
+---
+type: Batch
+timelimit: 2s
+match: Lines
+
+cases:
+  - name: sample1
+    in: |
+      3
+      RRR
+      GGG
+      BBB
+      RRR
+      RRR
+      RRR
+    out: |
+      6
+  - name: sample2
+    in: |
+      3
+      RRR
+      GGG
+      BBB
+      RGB
+      RGB
+      RGB
+    out: |
+      1
+  - name: sample3
+    in: |
+      6
+      RRRBBB
+      RRRBBB
+      RRRBBB
+      GGGRRG
+      GGGRRG
+      GGGBBR
+      RRRGGG
+      RRRGGG
+      RRRGGG
+      BBBRRB
+      BBBRRB
+      BBBGGR
+    out: |
+      10
+
+extend:
+  - type: Text
+    path: "./a"
+    in: /in/*.txt
+    out: /out/*.txt

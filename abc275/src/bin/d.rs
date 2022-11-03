@@ -7,12 +7,20 @@ fn main() {
         n: u64,
     }
 
-    println!("{}", f(n));
+    let mut v = vec![(0_u64, 0_u64); 0];
+    v.push((0, 1));
+    println!("{}", f(&mut v, n));
 }
 
-fn f(x: u64) -> u64 {
-    if x == 0 {
-        return 1;
+fn f(v: &mut Vec<(u64, u64)>, x: u64) -> u64 {
+    let mut a = v.iter().find(|&&e| e.0 == x);
+    let res;
+    if a.is_none() {
+        res = (x, f(v, x/2)+f(v, x/3));
+        v.push(res);
+    } else {
+        res = *a.unwrap();
     }
-    return f(x/2)+f(x/3);
+
+    return res.1;
 }
